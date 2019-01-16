@@ -16,18 +16,6 @@ public class Student {
     @Column(nullable = false, unique = true)
     private String email;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name  = "idCourse", nullable = false)
-    private Course course;
-
-    public Course getCourse() {
-        return course;
-    }
-
-    public void setCourse(Course course) {
-        this.course = course;
-    }
-
     public String getEmail() {
         return email;
     }
@@ -52,10 +40,9 @@ public class Student {
         this.name = name;
     }
 
-    public Student(String name, String email, Course course) {
+    public Student(String name, String email) {
         this.name = name;
         this.email = email;
-        this.course = course;
     }
 
     public Student() {

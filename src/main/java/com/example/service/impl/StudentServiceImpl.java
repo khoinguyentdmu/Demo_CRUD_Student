@@ -1,10 +1,7 @@
 package com.example.service.impl;
 
-import com.example.exception.CourseNotfoundException;
 import com.example.exception.StudentNotFoundException;
-import com.example.model.Course;
 import com.example.model.Student;
-import com.example.repository.ICourseRepository;
 import com.example.repository.IStudentRepository;
 import com.example.service.IStudentService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,9 +18,6 @@ public class StudentServiceImpl implements IStudentService {
 
     @Autowired
     IStudentRepository studentRepository;
-
-    @Autowired
-    ICourseRepository courseRepository;
 
     /**
      * Get all students
@@ -50,10 +44,6 @@ public class StudentServiceImpl implements IStudentService {
      * @return
      */
     public ResponseEntity<Object> createStudent(Student student) {
-
-        Course course = courseRepository.findById(1).orElseThrow(()-> new CourseNotfoundException(1));
-
-        student.setCourse(course);
 
         Student savedStudent = studentRepository.save(student);
 
